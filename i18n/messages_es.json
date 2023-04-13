@@ -1,0 +1,59 @@
+{
+	"pathLogic" : "Lógica",
+
+	"nameTrue"    : "Valor lógico verdadero",
+	"literalTrue" : "VERDADERO",
+	"leafTrue"    : "VERDADERO",
+
+	"nameFalse"    : "Valor lógico falso",
+	"literalFalse" : "FALSO",
+	"leafFalse"    : "FALSO",
+
+	"nameNegation"     : "Negación lógica",
+	"literalNegation"  : "¬",
+	"mnemonicNegation" : "NO",
+	"leafNegation"     : "Negación (NO)",
+
+	"nameConjunction"     : "Conjunción lógica",
+	"operatorConjunction" : "∧",
+	"mnemonicConjunction" : "Y",
+	"leafConjunction"     : "Conjunción (Y)",
+
+	"nameDisjunction"     : "Disyunción lógica",
+	"operatorDisjunction" : "∨",
+	"mnemonicDisjunction" : "O",
+	"leafDisjunction"     : "Disyunción (O)",
+
+	"nameImplication"     : "Implication lógica",
+	"operatorImplication" : "→",
+	"mnemonicImplication" : "IMPLICA",
+	"leafImplication"     : "Implicación (si)",
+
+	"nameEquivalence"     : "Equivalencia lógica",
+	"operatorEquivalence" : "↔",
+	"mnemonicEquivalence" : "EQUIVALE",
+	"leafEquivalence"     : "Equivalencia (si y sólo si)",
+
+	"nameExclusiveDisjunction"     : "Disyunción lógica exclusiva",
+	"operatorExclusiveDisjunction" : "⊕",
+	"mnemonicExclusiveDisjunction" : "OX",
+	"leafExclusiveDisjunction"     : "Disyunción exclusiva (OX)",
+
+	"namePredicate"   : "Predicado",
+	"leafPredicate0"  : "Predicado",
+	"leafPredicateN"  : "Predicado(...)",
+	"enterPredicate"  : "Introduzca el nombre de predicado",
+	"updatePredicate" : "Actualice el nombre de predicado",
+	"actionPredicate" : "Editar nombre del predicado...",
+
+	"pathFirstOrder" : "Lógica.Primer órden",
+
+	"mnemonicForAll" : "∀",
+	"nameForAll"     : "Cuantificación universal",
+	"leafForAll"     : "∀",
+
+	"mnemonicExists" : "∃",
+	"nameExists"     : "Cuantificación existencial",
+	"leafExists"     : "∃"
+}
+

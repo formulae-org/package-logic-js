@@ -1,0 +1,59 @@
+{
+	"pathLogic" : "Logic",
+
+	"nameTrue"    : "The logical true value",
+	"literalTrue" : "TRUE",
+	"leafTrue"    : "TRUE",
+
+	"nameFalse"    : "The logical false value",
+	"literalFalse" : "FALSE",
+	"leafFalse"    : "FALSE",
+
+	"nameNegation"     : "Logical negation",
+	"literalNegation"  : "¬",
+	"mnemonicNegation" : "NOT",
+	"leafNegation"     : "Negation (NOT)",
+
+	"nameConjunction"     : "Logical conjunction",
+	"operatorConjunction" : "∧",
+	"mnemonicConjunction" : "AND",
+	"leafConjunction"     : "Conjunction (AND)",
+
+	"nameDisjunction"     : "Logical disjunction",
+	"operatorDisjunction" : "∨",
+	"mnemonicDisjunction" : "OR",
+	"leafDisjunction"     : "Disjunction (OR)",
+
+	"nameImplication"     : "Logical implication",
+	"operatorImplication" : "→",
+	"mnemonicImplication" : "IMPLIES",
+	"leafImplication"     : "Implication (if)",
+
+	"nameEquivalence"     : "Logical equivalence",
+	"operatorEquivalence" : "↔",
+	"mnemonicEquivalence" : "EQUIVALENT",
+	"leafEquivalence"     : "Equivalence (if and only if)",
+
+	"nameExclusiveDisjunction"     : "Logical exclusive disjunction",
+	"operatorExclusiveDisjunction" : "⊕",
+	"mnemonicExclusiveDisjunction" : "XOR",
+	"leafExclusiveDisjunction"     : "Exclusive disjunction (XOR)",
+
+	"namePredicate"   : "Predicate",
+	"leafPredicate0"  : "Predicate",
+	"leafPredicateN"  : "Predicate(...)",
+	"enterPredicate"  : "Enter predicate name",
+	"updatePredicate" : "Update predicate name",
+	"actionPredicate" : "Edit predicate name...",
+
+	"pathFirstOrder" : "Logic.First order",
+
+	"mnemonicForAll" : "∀",
+	"nameForAll"     : "Universal quantification",
+	"leafForAll"     : "∀",
+
+	"mnemonicExists" : "∃",
+	"nameExists"     : "Existencial quantification",
+	"leafExists"     : "∃"
+}
+
