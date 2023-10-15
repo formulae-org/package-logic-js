@@ -257,15 +257,15 @@ Logic.toNumber = async (toNumber, session) => {
 };
 
 Logic.setReducers = () => {
-	ReductionManager.addReducer("Logic.Negation", Logic.notReducer);
-	ReductionManager.addReducer("Logic.Negation", Logic.notNot);
+	ReductionManager.addReducer("Logic.Negation", Logic.notReducer, "Logic.notReducer");
+	ReductionManager.addReducer("Logic.Negation", Logic.notNot,     "Logic.notNot");
 	
-	ReductionManager.addReducer("Logic.Conjunction", Logic.andReducer, { special: true });
-	ReductionManager.addReducer("Logic.Disjunction", Logic.orReducer,  { special: true });
+	ReductionManager.addReducer("Logic.Conjunction", Logic.andReducer, "Logic.andReducer", { special: true });
+	ReductionManager.addReducer("Logic.Disjunction", Logic.orReducer,  "Logic.orReducer", { special: true });
 	
-	ReductionManager.addReducer("Logic.Implication",          Logic.conditionalReducer);
-	ReductionManager.addReducer("Logic.Equivalence",          Logic.equivalenceReducer);
-	ReductionManager.addReducer("Logic.ExclusiveDisjunction", Logic.exclusiveOrReducer);
+	ReductionManager.addReducer("Logic.Implication",          Logic.conditionalReducer, "Logic.conditionalReducer");
+	ReductionManager.addReducer("Logic.Equivalence",          Logic.equivalenceReducer, "Logic.equivalenceReducer");
+	ReductionManager.addReducer("Logic.ExclusiveDisjunction", Logic.exclusiveOrReducer, "Logic.exclusiveOrReducer");
 
-	ReductionManager.addReducer("Math.Arithmetic.ToNumber", Logic.toNumber);
+	ReductionManager.addReducer("Math.Arithmetic.ToNumber", Logic.toNumber, "Logic.toNumber");
 };
