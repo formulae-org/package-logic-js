@@ -15,4 +15,6 @@ Take a look at this [tutorial](https://formulae.org/?script=tutorials/Complex) t
 ### Capabilities ###
 
 * Visualization of the [truth values](https://en.wikipedia.org/wiki/Truth_value) *true* and *false*
-* Visualization of the logical [negation](https://en.wikipedia.org/wiki/Negation), [conjunction](https://en.wikipedia.org/wiki/Logical_conjunction), [disyunction](https://en.wikipedia.org/wiki/Logical_disjunction), [conditional](https://en.wikipedia.org/wiki/Material_conditional), [equivalence](https://en.wikipedia.org/wiki/Logical_biconditional) and [exclusive disjunction](https://en.wikipedia.org/wiki/Exclusive_or), as $\neg p$, $p \land q$, $p \lor q$, $p \to q$, $p \leftrightarrow q$ and $p \oplus q$ respectively
+* Visualization of the logical [negation](https://en.wikipedia.org/wiki/Negation), [conjunction](https://en.wikipedia.org/wiki/Logical_conjunction), [disyunction](https://en.wikipedia.org/wiki/Logical_disjunction), [conditional](https://en.wikipedia.org/wiki/Material_conditional), [equivalence](https://en.wikipedia.org/wiki/Logical_biconditional) and [exclusive disjunction](https://en.wikipedia.org/wiki/Exclusive_or)
+  * As $\neg P$, $P \land Q$, $P \lor Q$, $P \to Q$, $P \leftrightarrow Q$ and $P \oplus Q$
+  * As $\text{NOT } P$, $P \text{ AND } Q$, $P \text{ OR } Q$, $P \text{ IF } Q$, $P \text{ IFF } Q$ and $P \text{ XOR } Q$
