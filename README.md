@@ -18,6 +18,6 @@ Take a look at this [tutorial](https://formulae.org/?script=tutorials/Complex) t
 * Visualization of the logical [negation](https://en.wikipedia.org/wiki/Negation), [conjunction](https://en.wikipedia.org/wiki/Logical_conjunction), [disyunction](https://en.wikipedia.org/wiki/Logical_disjunction), [conditional](https://en.wikipedia.org/wiki/Material_conditional), [equivalence](https://en.wikipedia.org/wiki/Logical_biconditional) and [exclusive disjunction](https://en.wikipedia.org/wiki/Exclusive_or)
   * As $\neg P$, $P \land Q$, $P \lor Q$, $P \to Q$, $P \leftrightarrow Q$ and $P \oplus Q$
   * As $\text{NOT } P$, $P \text{ AND } Q$, $P \text{ OR } Q$, $P \text{ IF } Q$, $P \text{ IFF } Q$ and $P \text{ XOR } Q$
-* Visualization of the [predicate](https://en.wikipedia.org/wiki/Predicate_(mathematical_logic)) expressions
+* Visualization of [predicate](https://en.wikipedia.org/wiki/Predicate_(mathematical_logic)) expressions
     * Nullary or 0-arity predicates, visualized as its own name, e.g. $P$
     * [First order logic](https://en.wikipedia.org/wiki/First-order_logic) predicates, with a given number of [terms](https://en.wikipedia.org/wiki/Term_(logic)), visualized as $P(t_1, t_2, ..., t_n)$
