@@ -17,7 +17,7 @@ Take a look at this [tutorial](https://formulae.org/?script=tutorials/Complex) t
 * Visualization of the [truth values](https://en.wikipedia.org/wiki/Truth_value) *true* and *false*
 * Visualization of logical operations. Users can choose between:
 
-<center>
+<div align="center">
    
 | Operation | Traditional notation | Mnemonic notation |
 | ----- |:-----:|:-----:|
@@ -28,7 +28,7 @@ Take a look at this [tutorial](https://formulae.org/?script=tutorials/Complex) t
 | [Equivalence](https://en.wikipedia.org/wiki/Logical_biconditional)  | $P \leftrightarrow Q$ | $P \text{ IFF } Q$ |
 | [Exclusive disjunction](https://en.wikipedia.org/wiki/Exclusive_or) | $P \oplus Q$          | $P \text{ XOR } Q$ |
 
-</center>
+</div>
 
 * Visualization of [predicate](https://en.wikipedia.org/wiki/Predicate_(mathematical_logic)) expressions
     * Nullary or 0-arity predicates, visualized as its own name, e.g. $P$
