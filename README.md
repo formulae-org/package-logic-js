@@ -17,10 +17,14 @@ Take a look at this [tutorial](https://formulae.org/?script=tutorials/Complex) t
 * Visualization of the [truth values](https://en.wikipedia.org/wiki/Truth_value) *true* and *false*
 * Visualization of logical operations
 
-| | [Negation](https://en.wikipedia.org/wiki/Negation) | [Conjunction](https://en.wikipedia.org/wiki/Logical_conjunction) | [Disyunction](https://en.wikipedia.org/wiki/Logical_disjunction) | [Conditional](https://en.wikipedia.org/wiki/Material_conditional) | [Equivalence](https://en.wikipedia.org/wiki/Logical_biconditional) | [Exclusive disjunction](https://en.wikipedia.org/wiki/Exclusive_or) |
-| ----- | ----- | ----- | ----- | ----- | ----- | ----- 
-|  Visualization 1 | $\neg P$ | $P \land Q$ | $P \lor Q$ | $P \to Q$ | $P \leftrightarrow Q$ | $P \oplus Q$ |
-|  Visualization 2 | $\text{NOT } P$ | $P \text{ AND } Q$ | $P \text{ OR } Q$ | $P \text{ IF } Q$ | $P \text{ IFF } Q$ | $P \text{ XOR } Q$ |
+| Operation | Tradicional notation | Mnemonic notation |
+| ----- | ----- | ----- |
+| [Negation](https://en.wikipedia.org/wiki/Negation)                  | $\neg P$              | $\text{NOT } P$    |
+| [Conjunction](https://en.wikipedia.org/wiki/Logical_conjunction)    | $P \land Q$           | $P \text{ AND } Q$ |
+| [Disyunction](https://en.wikipedia.org/wiki/Logical_disjunction)    | $P \lor Q$            | $P \text{ OR } Q$  |
+| [Conditional](https://en.wikipedia.org/wiki/Material_conditional)   | $P \to Q$             | $P \text{ IF } Q$  |
+| [Equivalence](https://en.wikipedia.org/wiki/Logical_biconditional)  | $P \leftrightarrow Q$ | $P \text{ IFF } Q$ |
+| [Exclusive disjunction](https://en.wikipedia.org/wiki/Exclusive_or) | $P \oplus Q$          | $P \text{ XOR } Q$ |
 
 * Visualization of [predicate](https://en.wikipedia.org/wiki/Predicate_(mathematical_logic)) expressions
     * Nullary or 0-arity predicates, visualized as its own name, e.g. $P$
