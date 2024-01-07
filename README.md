@@ -15,7 +15,7 @@ Take a look at this [tutorial](https://formulae.org/?script=tutorials/Complex) t
 ### Capabilities ###
 
 * Visualization of the [truth values](https://en.wikipedia.org/wiki/Truth_value) *true* and *false*
-* Visualization of logical operations. Users can choose between:
+* Visualization of logic operations. Users can choose between:
 
 <div align="center">
    
