@@ -38,3 +38,9 @@ Take a look at this [tutorial](https://formulae.org/?script=tutorials/Complex) t
 * Reduction of the logic operations [negation](https://en.wikipedia.org/wiki/Negation), [conjunction](https://en.wikipedia.org/wiki/Logical_conjunction), [disjunction](https://en.wikipedia.org/wiki/Logical_disjunction), [conditional](https://en.wikipedia.org/wiki/Material_conditional), [equivalence](https://en.wikipedia.org/wiki/Logical_biconditional) and [exclusive disjunction](https://en.wikipedia.org/wiki/Exclusive_or)
 * Conversion from/to numeric values (true ⇔ 1, false ⇔ 0)
 
+### Examples ###
+
+The following Fōrmulæ scripts use expressions from the **logic package**:
+
+* [Truth table](https://formulae.org/?script=examples/Truth_table)
+
