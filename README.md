@@ -33,6 +33,6 @@ Take a look at this [tutorial](https://formulae.org/?script=tutorials/Complex) t
 * Visualization of [predicate](https://en.wikipedia.org/wiki/Predicate_(mathematical_logic)) expressions
     * Nullary or 0-arity predicates, visualized as its own name, e.g. $P$
     * [First order logic](https://en.wikipedia.org/wiki/First-order_logic) predicates, with a given number of [terms](https://en.wikipedia.org/wiki/Term_(logic)), visualized as $P(t_1, t_2, ..., t_n)$
-* Visualization of [universal quantification](https://en.wikipedia.org/wiki/Universal_quantification), shown as $\forall$
-* Visualization of [existential quantification](https://en.wikipedia.org/wiki/Existential_quantification), shown as $\exists$
+* Visualization of [universal quantifier](https://en.wikipedia.org/wiki/Universal_quantification), shown as $\forall$
+* Visualization of [existential quantifier](https://en.wikipedia.org/wiki/Existential_quantification), shown as $\exists$
 
