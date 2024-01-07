@@ -21,7 +21,7 @@ Take a look at this [tutorial](https://formulae.org/?script=tutorials/Complex) t
 | ----- | ----- | ----- |
 | [Negation](https://en.wikipedia.org/wiki/Negation)                  | $\neg P$              | $\text{NOT } P$    |
 | [Conjunction](https://en.wikipedia.org/wiki/Logical_conjunction)    | $P \land Q$           | $P \text{ AND } Q$ |
-| [Disyunction](https://en.wikipedia.org/wiki/Logical_disjunction)    | $P \lor Q$            | $P \text{ OR } Q$  |
+| [Disjunction](https://en.wikipedia.org/wiki/Logical_disjunction)    | $P \lor Q$            | $P \text{ OR } Q$  |
 | [Conditional](https://en.wikipedia.org/wiki/Material_conditional)   | $P \to Q$             | $P \text{ IF } Q$  |
 | [Equivalence](https://en.wikipedia.org/wiki/Logical_biconditional)  | $P \leftrightarrow Q$ | $P \text{ IFF } Q$ |
 | [Exclusive disjunction](https://en.wikipedia.org/wiki/Exclusive_or) | $P \oplus Q$          | $P \text{ XOR } Q$ |
