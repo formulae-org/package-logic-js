@@ -35,4 +35,6 @@ Take a look at this [tutorial](https://formulae.org/?script=tutorials/Complex) t
     * [First order logic](https://en.wikipedia.org/wiki/First-order_logic) predicates, with a given number of [terms](https://en.wikipedia.org/wiki/Term_(logic)), visualized as $P(t_1, t_2, ..., t_n)$
 * Visualization of [universal quantifier](https://en.wikipedia.org/wiki/Universal_quantification), shown as $\forall$
 * Visualization of [existential quantifier](https://en.wikipedia.org/wiki/Existential_quantification), shown as $\exists$
+* Reduction of the logic operations [negation](https://en.wikipedia.org/wiki/Negation), [conjunction](https://en.wikipedia.org/wiki/Logical_conjunction), [disjunction](https://en.wikipedia.org/wiki/Logical_disjunction), [conditional](https://en.wikipedia.org/wiki/Material_conditional), [equivalence](https://en.wikipedia.org/wiki/Logical_biconditional) and [exclusive disjunction](https://en.wikipedia.org/wiki/Exclusive_or)
+* Conversion from/to numeric values (true ⇔ 1, false ⇔ 0)
 
