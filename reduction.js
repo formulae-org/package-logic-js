@@ -247,7 +247,7 @@ Logic.toNumber = async (toNumber, session) => {
 	
 	if (tag === "Logic.True" || tag === "Logic.False") {
 		toNumber.replaceBy(
-			CanonicalArithmetic.number2Expr(tag === "Logic.True" ? 1 : 0)
+			CanonicalArithmetic.number2InternalNumber(tag === "Logic.True" ? 1 : 0)
 		);
 		//session.log("Conversion to number");
 		return true;

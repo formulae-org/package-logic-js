@@ -2,11 +2,11 @@
 	"pathLogic" : "Logic",
 
 	"nameTrue"    : "The logical true value",
-	"literalTrue" : "TRUE",
+	"literalTrue" : "true",
 	"leafTrue"    : "TRUE",
 
 	"nameFalse"    : "The logical false value",
-	"literalFalse" : "FALSE",
+	"literalFalse" : "false",
 	"leafFalse"    : "FALSE",
 
 	"nameNegation"     : "Logical negation",
