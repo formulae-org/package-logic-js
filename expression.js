@@ -51,22 +51,22 @@ Logic.Predicate = class extends Expression {
 		super.get(name);
 	}
 	
-	setSerializationStrings(strings, promises) {
-		if (strings[0].length == 0) {
-			throw "Invalid name of predicate";
-		}
-
-		this.set("Name", strings[0]);
-	}
-	
 	getSerializationNames() {
 		return [ "Name" ];
 	}
 	
-	getSerializationStrings() {
+	async getSerializationStrings() {
 		return [ this.literal ];
 	}
-
+	
+	setSerializationStrings(strings, promises) {
+		if (strings[0].length == 0) {
+			throw "Invalid name of predicate";
+		}
+		
+		this.set("Name", strings[0]);
+	}
+	
 	prepareDisplay(context) {
 		if (this.children.length == 0) {
 			this.prepareDisplayAsLiteral(context);
