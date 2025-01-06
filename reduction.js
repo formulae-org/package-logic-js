@@ -250,7 +250,8 @@ Logic.toNumber = async (toNumber, session) => {
 			CanonicalArithmetic.createInternalNumber(
 				tag === "Logic.True" ?
 				CanonicalArithmetic.getIntegerOne(session) :
-				CanonicalArithmetic.Zero(session)
+				CanonicalArithmetic.Zero(session),
+				session
 			)
 		);
 		//session.log("Conversion to number");
