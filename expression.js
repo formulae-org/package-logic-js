@@ -20,7 +20,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 export class Logic extends Formulae.Package {}
 
-Logic.operatorType = 1; // 0: mnemonic (AND, OR, NOT, ...), 1: logic symbols (∧, ∨, ¬, ...)
+Logic.operatorType = 0; // 0: mnemonic (AND, OR, NOT, ...), 1: logic symbols (∧, ∨, ¬, ...)
 
 Logic.Predicate = class extends Expression {
 	constructor() {

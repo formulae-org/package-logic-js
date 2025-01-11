@@ -3,41 +3,41 @@
 
 	"nameTrue"    : "The logical true value",
 	"literalTrue" : "true",
-	"leafTrue"    : "TRUE",
+	"leafTrue"    : "true",
 
 	"nameFalse"    : "The logical false value",
 	"literalFalse" : "false",
-	"leafFalse"    : "FALSE",
+	"leafFalse"    : "false",
 
 	"nameNegation"     : "Logical negation",
 	"literalNegation"  : "¬",
-	"mnemonicNegation" : "NOT",
-	"leafNegation"     : "Negation (NOT)",
+	"mnemonicNegation" : "not",
+	"leafNegation"     : "Negation (not)",
 
 	"nameConjunction"     : "Logical conjunction",
 	"operatorConjunction" : "∧",
-	"mnemonicConjunction" : "AND",
-	"leafConjunction"     : "Conjunction (AND)",
+	"mnemonicConjunction" : "and",
+	"leafConjunction"     : "Conjunction (and)",
 
 	"nameDisjunction"     : "Logical disjunction",
 	"operatorDisjunction" : "∨",
-	"mnemonicDisjunction" : "OR",
-	"leafDisjunction"     : "Disjunction (OR)",
+	"mnemonicDisjunction" : "or",
+	"leafDisjunction"     : "Disjunction (or)",
 
 	"nameImplication"     : "Logical implication",
 	"operatorImplication" : "→",
-	"mnemonicImplication" : "IMPLIES",
+	"mnemonicImplication" : "implies",
 	"leafImplication"     : "Implication (if)",
 
 	"nameEquivalence"     : "Logical equivalence",
 	"operatorEquivalence" : "↔",
-	"mnemonicEquivalence" : "EQUIVALENT",
+	"mnemonicEquivalence" : "equivalent",
 	"leafEquivalence"     : "Equivalence (if and only if)",
 
 	"nameExclusiveDisjunction"     : "Logical exclusive disjunction",
 	"operatorExclusiveDisjunction" : "⊕",
-	"mnemonicExclusiveDisjunction" : "XOR",
-	"leafExclusiveDisjunction"     : "Exclusive disjunction (XOR)",
+	"mnemonicExclusiveDisjunction" : "xor",
+	"leafExclusiveDisjunction"     : "Exclusive disjunction (xor)",
 
 	"namePredicate"   : "Predicate",
 	"leafPredicate0"  : "Predicate",
