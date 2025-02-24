@@ -247,10 +247,10 @@ Logic.toNumber = async (toNumber, session) => {
 	
 	if (tag === "Logic.True" || tag === "Logic.False") {
 		toNumber.replaceBy(
-			CanonicalArithmetic.createInternalNumber(
+			Arithmetic.createInternalNumber(
 				tag === "Logic.True" ?
-				CanonicalArithmetic.getIntegerOne(session) :
-				CanonicalArithmetic.Zero(session),
+				Arithmetic.getIntegerOne(session) :
+				Arithmetic.Zero(session),
 				session
 			)
 		);
