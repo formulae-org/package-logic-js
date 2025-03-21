@@ -25,12 +25,12 @@
 	"leafDisjunction"     : "Disyunción (o)",
 
 	"nameImplication"     : "Implication lógica",
-	"operatorImplication" : "→",
+	"operatorImplication" : "⟶",
 	"mnemonicImplication" : "implica",
 	"leafImplication"     : "Implicación (si)",
 
 	"nameEquivalence"     : "Equivalencia lógica",
-	"operatorEquivalence" : "↔",
+	"operatorEquivalence" : "⟺",
 	"mnemonicEquivalence" : "equivale",
 	"leafEquivalence"     : "Equivalencia (si y sólo si)",
 
@@ -38,7 +38,27 @@
 	"operatorExclusiveDisjunction" : "⊕",
 	"mnemonicExclusiveDisjunction" : "ox",
 	"leafExclusiveDisjunction"     : "Disyunción exclusiva (ox)",
-
+	
+	"pathBigConjunction"          : "Logic.∧ Gran conjunción",
+	"pathBigDisjunction"          : "Logic.∨ Gran disyunción",
+	"pathBigEquivalence"          : "Logic.⇔ Gran equivalencia",
+	"pathBigExclusiveDisjunction" : "Logic.⊕ Gran disyunción exclusiva",
+	
+	"nameBigConjunction"          : "Gran conjunción",
+	"nameBigDisjunction"          : "Gran disyunción",
+	"nameBigEquivalence"          : "Gran equivalencia",
+	"nameBigExclusiveDisjunction" : "Gran disyunción exclusiva",
+	
+	"childBigConjunction0"           : "Expresión a ser usada para crear la gran conjunción",
+	"childBigDisjunction0"           : "Expresión a ser usada para crear la gran disyunción",
+	"childBigEquivalence0"           : "Expresión a ser usada para crear la gran equivalencia",
+	"childBigExclusiveDisjuncation0" : "Expresión a ser usada para crear la gran disyunción exclusiva",
+	"childBig1"                      : "Símbolo a ser utilizado para la iteración",
+	"childBig23"                     : "Lista contenendo los elementos a iterar",
+	"childBig2X"                     : "Valor inicial de la iteración",
+	"childBig3"                      : "Valor final de la iteración",
+	"childBig4"                      : "Valor de salto de la iteración",
+	
 	"namePredicate"   : "Predicado",
 	"leafPredicate0"  : "Predicado",
 	"leafPredicateN"  : "Predicado(...)",

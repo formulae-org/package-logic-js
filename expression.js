@@ -86,45 +86,58 @@ Logic.Predicate = class extends Expression {
 	}
 };
 
-Logic.editionPredicate = function(n) {
-	let s = "";
-	do {
-		s = prompt(Logic.messages.enterPredicate, s);
+const Big = class extends Expression.SummationLikeSymbol {
+	getChildName(index) {
+		switch (index) {
+			case 0: return Logic.messages.childBig0;
+			case 1: return Logic.messages.childBig1;
+			case 2: return this.children.length == 3 ? Logic.messages.childBig23 : Logic.messages.childBig2X;
+			case 3: return Logic.messages.childBig3;
+			case 4: return Logic.messages.childBig4;
+		}
 	}
-	while (s == "");
-	
-	if (s == null) return;
-	
-	let newExpression = Formulae.createExpression("Logic.Predicate");
-	newExpression.set("Name", s);
-
-	for (let i = 0; i < n; ++i) newExpression.addChild(new Expression.Null());
-	
-	Formulae.sExpression.replaceBy(newExpression);
-	Formulae.sHandler.prepareDisplay();
-	Formulae.sHandler.display();
-	Formulae.setSelected(Formulae.sHandler, n == 0 ? newExpression : newExpression.children[0], false);
 }
 
-Logic.actionPredicate = {
-	isAvailableNow: () => Formulae.sHandler.type != Formulae.ROW_OUTPUT,
-	getDescription: () => Logic.messages.actionPredicate,
-	doAction: () => {
-		let s = Formulae.sExpression.get("Name");
-		do {
-			s = prompt(Logic.messages.updatePredicate, s);
-		}
-		while (s == "");
-		
-		if (s == null) return;
-		
-		Formulae.sExpression.set("Name", s);
-		
-		Formulae.sHandler.prepareDisplay();
-		Formulae.sHandler.display();
-		Formulae.setSelected(Formulae.sHandler, Formulae.sExpression, false);
+const BigConjunction = class extends Big {
+	constructor() {
+		super();
+		this.symbol = "∧";
 	}
-};
+	
+	getTag() { return "Logic.BigConjunction"; }
+	getName() { return Logic.messages.nameBigConjunction; }
+}
+
+const BigDisjunction = class extends Big {
+	constructor() {
+		super();
+		this.symbol = "∨";
+	}
+	
+	getTag() { return "Logic.BigDisjunction"; }
+	getName() { return Logic.messages.nameBigDisjunction; }
+}
+
+const BigEquivalence = class extends Big {
+	constructor() {
+		super();
+		this.symbol = "⟺";
+		//this.symbol = "⟺⇔≡☰";
+	}
+	
+	getTag() { return "Logic.BigEquivalence"; }
+	getName() { return Logic.messages.nameBigEquivalence; }
+}
+
+const BigExclusiveDisjunction = class extends Big {
+	constructor() {
+		super();
+		this.symbol = "⊕";
+	}
+	
+	getTag() { return "Logic.BigExclusiveDisjunction"; }
+	getName() { return Logic.messages.nameBigExclusiveDisjunction; }
+}
 
 Logic.setExpressions = function(module) {
 	Formulae.setExpression(module, "Logic.True",  { clazz: Expression.Literal, getTag: () => "Logic.True",  getLiteral: () => this.messages.literalTrue,  getName: () => this.messages.nameTrue,  color: "green" });
@@ -146,6 +159,11 @@ Logic.setExpressions = function(module) {
 		min:         tag === "Implication" ? 2 : -2,
 		max:         2
 	}));
+	
+	Formulae.setExpression(module, "Logic.BigConjunction",          BigConjunction);
+	Formulae.setExpression(module, "Logic.BigDisjunction",          BigDisjunction);
+	Formulae.setExpression(module, "Logic.BigEquivalence",          BigEquivalence);
+	Formulae.setExpression(module, "Logic.BigExclusiveDisjunction", BigExclusiveDisjunction);
 	
 	Formulae.setExpression(module, "Logic.Predicate", Logic.Predicate);
 	

@@ -241,6 +241,448 @@ Logic.exclusiveOrReducer = async (xor, session) => {
 	return true;
 };
 
+const bigConjunctionDisjunction = async (big, session) => {
+	let n = big.children.length;
+	if (n === 3) return false;
+	
+	let isBigConjunction = big.getTag() === "Logic.BigConjunction";
+	let result;
+	
+	// symbol
+	let symbol = big.children[1];
+	if (symbol.getTag() !== "Symbolic.Symbol") {
+		return false;
+	}
+	
+	for (let i = 2; i < n; ++i) {
+		await session.reduce(big.children[i]);
+	}
+	
+	// from
+	let from;
+	if (n >= 4) {
+		if (!big.children[2].isInternalNumber()) return false;
+		from = big.children[2].get("Value");
+		if (Arithmetic.isComplex(from)) return false;
+	}
+	else {
+		from = Arithmetic.getIntegerOne(session);
+	}
+	
+	// to
+	if (!big.children[n == 3 ? 2 : 3].isInternalNumber()) return false;
+	let to = big.children[n == 3 ? 2 : 3].get("Value");
+	if (Arithmetic.isComplex(to)) return false;
+	
+	// step
+	let step;
+	if (n == 5) {
+		if (!big.children[4].isInternalNumber()) return false;
+		step = big.children[4].get("Value");
+		if (Arithmetic.isComplex(step)) return false;
+	}
+	else {
+		step = Arithmetic.getIntegerOne(session);
+	}
+	
+	if (step.isZero()) return false;
+	
+	// sign
+	let negative = step.isNegative();
+	
+	result = Formulae.createExpression(
+		isBigConjunction ?
+		"Logic.Conjunction" :
+		"Logic.Disjunction"
+	);
+	
+	//////////////////////////////////////
+	
+	result.createScope();
+	let scopeEntry = new ScopeEntry();
+	result.putIntoScope(symbol.get("Name"), scopeEntry, false);
+	
+	big.replaceBy(result);
+	
+	let arg = big.children[0];
+	let clone, tag;
+	
+	filling: while (true) {
+		if (negative) {
+			if (Arithmetic.comparison(from, to, session) < 0) {
+				break filling;
+			}
+		}
+		else {
+			if (Arithmetic.comparison(from, to, session) > 0) {
+				break filling;
+			}
+		}
+		
+		scopeEntry.setValue(Arithmetic.createInternalNumber(from, session));
+		
+		result.addChild(clone = arg.clone());
+		n = result.children.length;
+		
+		clone = await session.reduceAndGet(clone, n - 1);
+		tag = clone.getTag();
+		
+		if (isBigConjunction) {
+			if (tag === "Logic.True") {
+				result.removeChildAt(n - 1);
+			}
+			else if (tag === "Logic.False") {
+				result.replaceBy(clone);
+				return true;
+			}
+		}
+		else {
+			if (tag === "Logic.False") {
+				result.removeChildAt(n - 1);
+			}
+			else if (tag === "Logic.True") {
+				result.replaceBy(clone);
+				return true;
+			}
+		}
+		
+		from = Arithmetic.addition(from, step, session);
+	}
+	
+	result.removeScope();
+	
+	n = result.children.length;
+	if (n === 0) {
+		result.replaceBy(Formulae.createExpression(isBigConjunction ? "Logic.True" : "Logic.False"));
+	}
+	else if (n === 1) {
+		result.replaceBy(result.children[0]);
+	}
+	
+	return true;
+};
+
+const bigConjunctionDisjunctionIn = async (big, session) => {
+	let n = big.children.length;
+	if (n !== 3) return false;
+	
+	let isBigConjunction = big.getTag() === "Logic.BigConjunction";
+	
+	let symbol = big.children[1];
+	if (symbol.getTag() !== "Symbolic.Symbol") {
+		return false;
+	}
+	
+	let list = await session.reduceAndGet(big.children[2], 2);
+	if (list.getTag() !== "List.List") {
+		return false;
+	}
+	
+	let arg = big.children[0];
+	let clone, tag;
+	
+	let result = Formulae.createExpression(
+		isBigConjunction ?
+		"Logic.Conjunction" :
+		"Logic.Disjunction"
+	);
+	
+	big.replaceBy(result);
+	
+	result.createScope();
+	let scopeEntry = new ScopeEntry();
+	result.putIntoScope(symbol.get("Name"), scopeEntry, false);
+	
+	for (let i = 0, m = list.children.length; i < m; ++i) {
+		scopeEntry.setValue(list.children[i].clone());
+		
+		result.addChild(clone = arg.clone());
+		n = result.children.length;
+		
+		result.unlockScope();
+		clone = await session.reduceAndGet(clone, n - 1);
+		result.lockScope();
+		tag = clone.getTag();
+		
+		if (isBigConjunction) {
+			if (tag === "Logic.True") {
+				result.removeChildAt(n - 1);
+			}
+			else if (tag === "Logic.False") {
+				result.replaceBy(clone);
+				return true;
+			}
+		}
+		else {
+			if (tag === "Logic.False") {
+				result.removeChildAt(n - 1);
+			}
+			else if (tag === "Logic.True") {
+				result.replaceBy(clone);
+				return true;
+			}
+		}
+	}
+	
+	result.removeScope();
+	
+	n = result.children.length;
+	if (n === 0) {
+		result.replaceBy(Formulae.createExpression(isBigConjunction ? "Logic.True" : "Logic.False"));
+	}
+	else if (n === 1) {
+		result.replaceBy(result.children[0]);
+	}
+	
+	return true;
+};
+
+const bigEquivalenceXOR = async (big, session) => {
+	let n = big.children.length;
+	if (n === 3) return false;
+	
+	let isBigEquivalence = big.getTag() === "Logic.BigEquivalence";
+	let result;
+	
+	// symbol
+	let symbol = big.children[1];
+	if (symbol.getTag() !== "Symbolic.Symbol") {
+		return false;
+	}
+	
+	for (let i = 2; i < n; ++i) {
+		await session.reduce(big.children[i]);
+	}
+	
+	// from
+	let from;
+	if (n >= 4) {
+		if (!big.children[2].isInternalNumber()) return false;
+		from = big.children[2].get("Value");
+		if (Arithmetic.isComplex(from)) return false;
+	}
+	else {
+		from = Arithmetic.getIntegerOne(session);
+	}
+	
+	// to
+	if (!big.children[n == 3 ? 2 : 3].isInternalNumber()) return false;
+	let to = big.children[n == 3 ? 2 : 3].get("Value");
+	if (Arithmetic.isComplex(to)) return false;
+	
+	// step
+	let step;
+	if (n == 5) {
+		if (!big.children[4].isInternalNumber()) return false;
+		step = big.children[4].get("Value");
+		if (Arithmetic.isComplex(step)) return false;
+	}
+	else {
+		step = Arithmetic.getIntegerOne(session);
+	}
+	
+	if (step.isZero()) return false;
+	
+	// sign
+	let negative = step.isNegative();
+	
+	result = Formulae.createExpression(
+		isBigEquivalence ?
+		"Logic.Equivalence" :
+		"Logic.ExclusiveDisjunction"
+	);
+	
+	//////////////////////////////////////
+	
+	result.createScope();
+	let scopeEntry = new ScopeEntry();
+	result.putIntoScope(symbol.get("Name"), scopeEntry, false);
+	
+	big.replaceBy(result);
+	
+	let arg = big.children[0];
+	let clone, tag;
+	let count = 0;
+	
+	filling: while (true) {
+		if (negative) {
+			if (Arithmetic.comparison(from, to, session) < 0) {
+				break filling;
+			}
+		}
+		else {
+			if (Arithmetic.comparison(from, to, session) > 0) {
+				break filling;
+			}
+		}
+		
+		scopeEntry.setValue(Arithmetic.createInternalNumber(from, session));
+		
+		result.addChild(clone = arg.clone());
+		n = result.children.length;
+		
+		clone = await session.reduceAndGet(clone, n - 1);
+		tag = clone.getTag();
+		
+		if (isBigEquivalence) {
+			if (tag === "Logic.False") {
+				++count;
+				result.removeChildAt(n - 1);
+			}
+			else if (tag === "Logic.True") {
+				result.removeChildAt(n - 1);
+			}
+		}
+		else {
+			if (tag === "Logic.True") {
+				++count;
+				result.removeChildAt(n - 1);
+			}
+			else if (tag === "Logic.False") {
+				result.removeChildAt(n - 1);
+			}
+		}
+		
+		from = Arithmetic.addition(from, step, session);
+	}
+	
+	result.removeScope();
+	
+	n = result.children.length;
+	if (n === 0) {
+		if (isBigEquivalence) {
+			result.replaceBy(Formulae.createExpression(count % 2 === 1 ? "Logic.False" : "Logic.True"));
+		}
+		else {
+			result.replaceBy(Formulae.createExpression(count % 2 === 1 ? "Logic.True" : "Logic.False"));
+		}
+	}
+	else if (n === 1) {
+		if (count % 2 === 1) {
+			result.replaceBy(
+				Formulae.createExpression(
+					"Logic.Negation",
+					result.children[0]
+				)
+			);
+		}
+		else {
+			result.replaceBy(result.children[0]);
+		}
+	}
+	else {
+		if (count % 2 === 1) {
+			let other = Formulae.createExpression(isBigEquivalence ? "Logic.ExclusiveDisjunction" : "Logic.Equivalence");
+			result.replaceBy(other);
+			for (let i = 0; i < n; ++i) {
+				other.addChild(result.children[i]);
+			}
+		}
+	}
+	
+	return true;
+};
+
+const bigEquivalenceXORIn = async (big, session) => {
+	let n = big.children.length;
+	if (n !== 3) return false;
+	
+	let isBigEquivalence = big.getTag() === "Logic.BigEquivalence";
+	
+	let symbol = big.children[1];
+	if (symbol.getTag() !== "Symbolic.Symbol") {
+		return false;
+	}
+	
+	let list = await session.reduceAndGet(big.children[2], 2);
+	if (list.getTag() !== "List.List") {
+		return false;
+	}
+	
+	let arg = big.children[0];
+	let clone, tag;
+	let count = 0;
+	
+	let result = Formulae.createExpression(
+		isBigEquivalence ?
+		"Logic.Equivalence" :
+		"Logic.ExclusiveDisjunction"
+	);
+	
+	big.replaceBy(result);
+	
+	result.createScope();
+	let scopeEntry = new ScopeEntry();
+	result.putIntoScope(symbol.get("Name"), scopeEntry, false);
+	
+	for (let i = 0, m = list.children.length; i < m; ++i) {
+		scopeEntry.setValue(list.children[i].clone());
+		
+		result.addChild(clone = arg.clone());
+		n = result.children.length;
+		
+		result.unlockScope();
+		clone = await session.reduceAndGet(clone, n - 1);
+		result.lockScope();
+		tag = clone.getTag();
+		
+		if (isBigEquivalence) {
+			if (tag === "Logic.False") {
+				++count;
+				result.removeChildAt(n - 1);
+			}
+			else if (tag === "Logic.True") {
+				result.removeChildAt(n - 1);
+			}
+		}
+		else {
+			if (tag === "Logic.True") {
+				++count;
+				result.removeChildAt(n - 1);
+			}
+			else if (tag === "Logic.False") {
+				result.removeChildAt(n - 1);
+			}
+		}
+	}
+	
+	result.removeScope();
+	
+	n = result.children.length;
+	if (n === 0) {
+		if (isBigEquivalence) {
+			result.replaceBy(Formulae.createExpression(count % 2 === 1 ? "Logic.False" : "Logic.True"));
+		}
+		else {
+			result.replaceBy(Formulae.createExpression(count % 2 === 1 ? "Logic.True" : "Logic.False"));
+		}
+	}
+	else if (n === 1) {
+		if (count % 2 === 1) {
+			result.replaceBy(
+				Formulae.createExpression(
+					"Logic.Negation",
+					result.children[0]
+				)
+			);
+		}
+		else {
+			result.replaceBy(result.children[0]);
+		}
+	}
+	else {
+		if (count % 2 === 1) {
+			let other = Formulae.createExpression(isBigEquivalence ? "Logic.ExclusiveDisjunction" : "Logic.Equivalence");
+			result.replaceBy(other);
+			for (let i = 0; i < n; ++i) {
+				other.addChild(result.children[i]);
+			}
+		}
+	}
+	
+	return true;
+};
+
 Logic.toNumber = async (toNumber, session) => {
 	let expr = toNumber.children[0];
 	let tag = expr.getTag();
@@ -266,11 +708,24 @@ Logic.setReducers = () => {
 	ReductionManager.addReducer("Logic.Negation", Logic.notNot,     "Logic.notNot");
 	
 	ReductionManager.addReducer("Logic.Conjunction", Logic.andReducer, "Logic.andReducer", { special: true });
-	ReductionManager.addReducer("Logic.Disjunction", Logic.orReducer,  "Logic.orReducer", { special: true });
+	ReductionManager.addReducer("Logic.Disjunction", Logic.orReducer,  "Logic.orReducer",  { special: true });
 	
 	ReductionManager.addReducer("Logic.Implication",          Logic.conditionalReducer, "Logic.conditionalReducer");
 	ReductionManager.addReducer("Logic.Equivalence",          Logic.equivalenceReducer, "Logic.equivalenceReducer");
 	ReductionManager.addReducer("Logic.ExclusiveDisjunction", Logic.exclusiveOrReducer, "Logic.exclusiveOrReducer");
-
+	
+	ReductionManager.addReducer("Logic.BigConjunction", bigConjunctionDisjunction,   "bigConjunctionDisjunction",   { special: true });
+	ReductionManager.addReducer("Logic.BigConjunction", bigConjunctionDisjunctionIn, "bigConjunctionDisjunctionIn", { special: true });
+	
+	ReductionManager.addReducer("Logic.BigDisjunction", bigConjunctionDisjunction,   "bigConjunctionDisjunction",   { special: true });
+	ReductionManager.addReducer("Logic.BigDisjunction", bigConjunctionDisjunctionIn, "bigConjunctionDisjunctionIn", { special: true });
+	
+	ReductionManager.addReducer("Logic.BigEquivalence", bigEquivalenceXOR,   "bigEquivalenceXOR",   { special: true });
+	ReductionManager.addReducer("Logic.BigEquivalence", bigEquivalenceXORIn, "bigEquivalenceXORIn", { special: true });
+	
+	ReductionManager.addReducer("Logic.BigExclusiveDisjunction", bigEquivalenceXOR,   "bigEquivalenceXOR",   { special: true });
+	ReductionManager.addReducer("Logic.BigExclusiveDisjunction", bigEquivalenceXORIn, "bigEquivalenceXORIn", { special: true });
+	
 	ReductionManager.addReducer("Math.Arithmetic.ToNumber", Logic.toNumber, "Logic.toNumber");
 };
+

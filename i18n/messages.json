@@ -25,12 +25,12 @@
 	"leafDisjunction"     : "Disjunction (or)",
 
 	"nameImplication"     : "Logical implication",
-	"operatorImplication" : "→",
+	"operatorImplication" : "⟶",
 	"mnemonicImplication" : "implies",
 	"leafImplication"     : "Implication (if)",
 
 	"nameEquivalence"     : "Logical equivalence",
-	"operatorEquivalence" : "↔",
+	"operatorEquivalence" : "⟺",
 	"mnemonicEquivalence" : "equivalent",
 	"leafEquivalence"     : "Equivalence (if and only if)",
 
@@ -38,7 +38,27 @@
 	"operatorExclusiveDisjunction" : "⊕",
 	"mnemonicExclusiveDisjunction" : "xor",
 	"leafExclusiveDisjunction"     : "Exclusive disjunction (xor)",
-
+	
+	"pathBigConjunction"          : "Logic.∧ Big conjunction",
+	"pathBigDisjunction"          : "Logic.∨ Big disjunction",
+	"pathBigEquivalence"          : "Logic.⇔ Big equivalence",
+	"pathBigExclusiveDisjunction" : "Logic.⊕ Big exclusive disjunction",
+	
+	"nameBigConjunction"          : "Big conjunction",
+	"nameBigDisjunction"          : "Big disjunction",
+	"nameBigEquivalence"          : "Big equivalence",
+	"nameBigExclusiveDisjunction" : "Big exclusive disjunction",
+	
+	"childBigConjunction0"           : "Expression to be used to create the big conjunction",
+	"childBigDisjunction0"           : "Expression to be used to create the big disjunction",
+	"childBigEquivalence0"           : "Expression to be used to create the big equivalence",
+	"childBigExclusiveDisjuncation0" : "Expression to be used to create the big exclusive disjunction",
+	"childBig1"                      : "Symbol to be used over the iteration",
+	"childBig23"                     : "List containing the elements to be iterated over",
+	"childBig2X"                     : "Starting value of iteration",
+	"childBig3"                      : "Ending value of iteration",
+	"childBig4"                      : "Step of the iteration",
+	
 	"namePredicate"   : "Predicate",
 	"leafPredicate0"  : "Predicate",
 	"leafPredicateN"  : "Predicate(...)",
