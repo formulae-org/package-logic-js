@@ -140,8 +140,21 @@ const BigExclusiveDisjunction = class extends Big {
 }
 
 Logic.setExpressions = function(module) {
-	Formulae.setExpression(module, "Logic.True",  { clazz: Expression.Literal, getTag: () => "Logic.True",  getLiteral: () => this.messages.literalTrue,  getName: () => this.messages.nameTrue,  color: "green" });
-	Formulae.setExpression(module, "Logic.False", { clazz: Expression.Literal, getTag: () => "Logic.False", getLiteral: () => this.messages.literalFalse, getName: () => this.messages.nameFalse, color: "red" });
+	Formulae.setExpression(module, "Logic.True", {
+		clazz:      Expression.Literal,
+		getTag:     () => "Logic.True", 
+		getLiteral: () => this.messages.literalTrue, 
+		getName:    () => this.messages.nameTrue,
+		color:      "green"
+	});
+	
+	Formulae.setExpression(module, "Logic.False", {
+		clazz:      Expression.Literal,
+		getTag:     () => "Logic.False",
+		getLiteral: () => this.messages.literalFalse,
+		getName:    () => this.messages.nameFalse,
+		color:      "red"
+	});
 	
 	// negation
 	Formulae.setExpression(module, "Logic.Negation", {
