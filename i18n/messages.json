@@ -73,7 +73,7 @@
 	"leafForAll"     : "∀",
 
 	"mnemonicExists" : "∃",
-	"nameExists"     : "Existencial quantification",
+	"nameExists"     : "Existential quantification",
 	"leafExists"     : "∃"
 }
 
