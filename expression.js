@@ -16,7 +16,7 @@ You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-'use strict';
+"use strict";
 
 export class Logic extends Formulae.Package {}
 
@@ -27,13 +27,13 @@ Logic.Predicate = class extends Expression {
 		super();
 		this.color = "#7F7F00";
 	}
-
+	
 	getTag() { return "Logic.Predicate"; }
 	getName() { return Logic.messages.namePredicate; }
 	canHaveChildren(count) { return true; }
 	getLiteral() { return this.literal; }
 	getMnemonic() { return this.literal; }
-
+	
 	set(name, value) {
 		if (name == "Name") {
 			this.literal = value;
@@ -75,7 +75,7 @@ Logic.Predicate = class extends Expression {
 			this.prepareDisplayAsFunction(context);
 		}
 	}
-
+	
 	display(context, x, y) {
 		if (this.children.length == 0) {
 			this.displayAsLiteral(context, x, y);

@@ -16,7 +16,7 @@ You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-'use strict';
+"use strict";
 
 export class Logic extends Formulae.Package {}
 
@@ -31,7 +31,7 @@ Logic.editionPredicate = function(n) {
 	
 	let newExpression = Formulae.createExpression("Logic.Predicate");
 	newExpression.set("Name", s);
-
+	
 	for (let i = 0; i < n; ++i) newExpression.addChild(new Expression.Null());
 	
 	Formulae.sExpression.replaceBy(newExpression);
