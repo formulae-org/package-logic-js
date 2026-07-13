@@ -48,7 +48,16 @@
 	"nameBigDisjunction"          : "Gran disyunción",
 	"nameBigEquivalence"          : "Gran equivalencia",
 	"nameBigExclusiveDisjunction" : "Gran disyunción exclusiva",
-	
+
+	"leafBigConjunctionRange"          : "Gran conjunción en un rango",
+	"leafBigConjunctionList"           : "Gran conjunción sobre una lista",
+	"leafBigDisjunctionRange"          : "Gran disyunción en un rango",
+	"leafBigDisjunctionList"           : "Gran disyunción sobre una lista",
+	"leafBigEquivalenceRange"          : "Gran equivalencia en un rango",
+	"leafBigEquivalenceList"           : "Gran equivalencia sobre una lista",
+	"leafBigExclusiveDisjunctionRange" : "Gran disyunción exclusiva en un rango",
+	"leafBigExclusiveDisjunctionList"  : "Gran disyunción exclusiva sobre una lista",
+
 	"childBigConjunction0"           : "Expresión a ser usada para crear la gran conjunción",
 	"childBigDisjunction0"           : "Expresión a ser usada para crear la gran disyunción",
 	"childBigEquivalence0"           : "Expresión a ser usada para crear la gran equivalencia",

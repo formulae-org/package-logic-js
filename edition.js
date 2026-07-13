@@ -61,52 +61,42 @@ Logic.actionPredicate = {
 };
 
 Logic.setEditions = function() {
-	Formulae.addEdition(this.messages.pathLogic, null, this.messages.leafTrue,  () => Expression.replacingEdition("Logic.True"));
-	Formulae.addEdition(this.messages.pathLogic, null, this.messages.leafFalse, () => Expression.replacingEdition("Logic.False"));
-	
-	Formulae.addEdition(this.messages.pathLogic, null, this.messages.leafNegation, () => Expression.wrapperEdition("Logic.Negation"));
-	
+	// Truth values (replacing) — the colored literals rendered through the engine
+	Formulae.addEdition(this.messages.pathLogic, '<expression tag="Logic.True"/>',  this.messages.leafTrue,  () => Expression.replacingEdition("Logic.True"));
+	Formulae.addEdition(this.messages.pathLogic, '<expression tag="Logic.False"/>', this.messages.leafFalse, () => Expression.replacingEdition("Logic.False"));
+
+	// Negation (wrapper) — ¬▮ / not ▮, depending on the operator style
+	Formulae.addWrapperEditions(this.messages, "Logic", "Logic", [ "Negation" ]);
+
+	// Binary connectives — ▮ ∘ ▯, operator style-dependent
 	[ "Conjunction", "Disjunction", "Implication", "Equivalence", "ExclusiveDisjunction" ].forEach(
-		tag => Formulae.addEdition(
-			Logic.messages.pathLogic,
-			null,
-			Logic.messages["leaf" + tag],
-			() => Expression.binaryEdition("Logic." + tag, false)
-		)
+		tag => Formulae.addBinaryEdition(this.messages, "Logic", tag, "Logic." + tag)
 	);
-	
-	[ 4, 3 ].forEach(type => {
-		Formulae.addEdition(
-			Logic.messages.pathBigConjunction,
-			"packages/org.formulae.logic/img/big_conjunction" + type + ".png",
-			null,
-			() => Expression.multipleEdition("Logic.BigConjunction", type, 0)
-		);
-		Formulae.addEdition(
-			Logic.messages.pathBigDisjunction,
-			"packages/org.formulae.logic/img/big_disjunction" + type + ".png",
-			null,
-			() => Expression.multipleEdition("Logic.BigDisjunction", type, 0)
-		);
-		Formulae.addEdition(
-			Logic.messages.pathBigEquivalence,
-			"packages/org.formulae.logic/img/big_equivalence" + type + ".png",
-			null,
-			() => Expression.multipleEdition("Logic.BigEquivalence", type, 0)
-		);
-		Formulae.addEdition(
-			Logic.messages.pathBigExclusiveDisjunction,
-			"packages/org.formulae.logic/img/big_exclusive_disjunction" + type + ".png",
-			null,
-			() => Expression.multipleEdition("Logic.BigExclusiveDisjunction", type, 0)
-		);
+
+	// Big (iterated) connectives — SummationLikeSymbol with child 0 highlighted; type 4 = range, type 3 = list.
+	// Replaces the former big_*.png icons with engine-rendered SVG previews.
+	[ "Conjunction", "Disjunction", "Equivalence", "ExclusiveDisjunction" ].forEach(op => {
+		let tag = "Logic.Big" + op;
+		[ [ 4, "Range" ], [ 3, "List" ] ].forEach(([ type, variant ]) => {
+			let icon = `<expression tag="${tag}"><expression tag="Visualization.Selected"><expression tag="Null"/></expression>`
+				+ '<expression tag="Null"/>'.repeat(type - 1)
+				+ '</expression>';
+			Formulae.addEdition(
+				this.messages["pathBig" + op],
+				icon,
+				this.messages["leafBig" + op + variant],
+				() => Expression.multipleEdition(tag, type, 0)
+			);
+		});
 	});
-	
-	Formulae.addEdition(this.messages.pathLogic, null, this.messages.leafPredicate0, () => Logic.editionPredicate(0));
-	Formulae.addEdition(this.messages.pathLogic, null, this.messages.leafPredicateN, () => Logic.editionPredicate(1));
-	
-	Formulae.addEdition(this.messages.pathFirstOrder, null, this.messages.leafForAll, () => Expression.binaryEdition("Logic.ForAll", false));
-	Formulae.addEdition(this.messages.pathFirstOrder, null, this.messages.leafExists, () => Expression.binaryEdition("Logic.Exists", false));
+
+	// Predicates (replacing) — atomic P and P(▯); the actual name is prompted on creation
+	Formulae.addEdition(this.messages.pathLogic, '<expression tag="Logic.Predicate" Name="P"/>',                                     this.messages.leafPredicate0, () => Logic.editionPredicate(0));
+	Formulae.addEdition(this.messages.pathLogic, '<expression tag="Logic.Predicate" Name="P"><expression tag="Null"/></expression>', this.messages.leafPredicateN, () => Logic.editionPredicate(1));
+
+	// First-order quantifiers — ∀ / ∃
+	Formulae.addBinaryEdition(this.messages, "FirstOrder", "ForAll", "Logic.ForAll");
+	Formulae.addBinaryEdition(this.messages, "FirstOrder", "Exists", "Logic.Exists");
 };
 
 Logic.setActions = function() {

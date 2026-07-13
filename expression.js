@@ -191,6 +191,7 @@ Logic.onChangeOperatorStyle = function(pos) {
 	
 	Logic.operatorType = pos;
 	Formulae.refreshHandlers();
+	Formulae.loadReloadEditions(); // rebuild the edition panel so the style-dependent operator icons reflect the new notation
 };
 
 Logic.onConfiguration = () => {
